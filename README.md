@@ -1,5 +1,3 @@
-# laboremos -Software Developer Case.pdf
-
 # To run the entire system with docker-compose
 run docker-compose up --build -d
 
