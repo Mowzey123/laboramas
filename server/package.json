@@ -35,9 +35,6 @@
         "gulp-rimraf": "^0.2.2",
         "moment": "^2.29.1",
         "moment-range": "^4.0.2",
-        "morgan": "^1.10.0",
-        "morgan-body": "^2.5.2",
-        "winston": "^3.3.3",
         "xss-clean": "^0.1.1"
     }
 }

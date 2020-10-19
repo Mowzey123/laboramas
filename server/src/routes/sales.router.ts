@@ -1,5 +1,4 @@
 import { Request, Response,Router} from 'express';
-import winstonobj from '../helpers/winstonLogger';
 const path = require('path')
 import Csvparser from '../helpers/csvparser';
 
@@ -16,7 +15,7 @@ class salesRouter{
         const newfilenames = `${path.join(__dirname,'../../uploads/')}${Date.now()}.${req.files.file.name.split(".")[1]}`;
         req.files.file.mv(newfilenames,(err:any)=> {
             if (err){
-                winstonobj.logWihWinston(
+                console.log(
                     {
                         status:false,
                         message:"Failed to upload file",

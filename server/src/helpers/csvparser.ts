@@ -1,6 +1,5 @@
 import fs = require('fs');
 import path = require('path');
-import winstonobj from './winstonLogger';
 const csv = require('csv-parser');
 import {Response} from 'express';
 import * as Moment from 'moment';
@@ -22,7 +21,7 @@ const moment = extendMoment(Moment);
          */
         fs.readdir(path.join(__dirname,'../../uploads'), (err:any, filenames:any) => {
           if (err) {
-            winstonobj.logWihWinston({
+            console.log({
                 status:false,
                 message:'failed to read files',
                 err:err},'ErrorLogs'
@@ -44,10 +43,10 @@ const moment = extendMoment(Moment);
     }
 
     //get all records that fall within requested date range
-    getRecordsBetweenDates = (req:Request,res:Response,callback:any) => {
+    getRecordsBetweenDates = (req:any,res:Response,callback:any) => {
         fs.readdir(path.join(__dirname,'../../uploads'), (err:any, filenames:any) => {
           if (err) {
-            winstonobj.logWihWinston({
+            console.log({
                 status:false,
                 message:'failed to read files',
                 err:err},'ErrorLogs'
@@ -89,7 +88,7 @@ const moment = extendMoment(Moment);
             }
           })
           .on('end', () => {
-              winstonobj.logWihWinston({
+              console.log({
                   status:true,
                   message:'Data harvested'
               },'SuccessLogs') 

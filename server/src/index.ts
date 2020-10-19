@@ -2,9 +2,7 @@ import express =  require('express');
 import bodyParser = require('body-parser');
 import * as Config from './config/index';
 const xss = require('xss-clean');
-import winstonobj from './helpers/winstonLogger';
 import { NextFunction ,Request,Response} from 'express';
-import Logger from './helpers/logger';
 import salesrouter from "./routes/sales.router";
 import dashboardrouter from "./routes/dashboard.router"
 const fileUpload =  require('express-fileupload');
@@ -34,20 +32,12 @@ class Server{
              next();
            });
          this.app.use(express.json({ limit: '10kb' })); // Body limit is 10
-         this.app.use((err:any, req:Request, res:Response, next:NextFunction) => {
-            winstonobj.logWihWinston({status:false,msg:`failed to parse json body`,err:err},'ErrorLogs'); 
-            if(err.status === 400)
-              return res.status(err.status).send({status:false,message:'Invalid JSON body'});
-          
-            return next(err); // if it's not a 400, let the default error handling do it. 
-          });
           this.app.use(fileUpload({ // limit file upload size
             limits: { fileSize: 100000 },
             }));
          this.app.use(express.json());
          this.app.use(express.urlencoded({extended: false}));
          this.app.use(xss());
-         new Logger(this.app);
     }
 
     // configure server routes
@@ -58,7 +48,7 @@ class Server{
 
     startServer = () => {
         this.app.listen(this.app.get('port'),() => {
-            winstonobj.logWihWinston({msg:`Server started on port ${this.app.get('port')}`},'SuccessLogs');
+            console.log({msg:`Server started on port ${this.app.get('port')}`},'SuccessLogs');
         });
     }
 }

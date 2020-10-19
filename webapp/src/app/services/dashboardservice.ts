@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class Dashbaordservice {
-    private baseUrl = 'http://localhost:4000';
+    private baseUrl = 'http://127.0.0.1:4000';
 
     constructor(private http: HttpClient) { }
 
