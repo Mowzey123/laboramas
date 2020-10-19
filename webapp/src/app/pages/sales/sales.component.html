@@ -1,0 +1,49 @@
+<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+    <!-- Right -->
+
+    <a href="#"><strong><span class="fa fa-dashboard"></span>SALES</strong></a>
+    <hr>
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12" style='display: inline;'>
+          <form class='row'>
+              <div class='col col-lg-10 col-md-10 col-sm-9 col-xs-12'>
+                  <label>upload Sales file</label>
+                <input type="file" accept=".csv" (change)="fileChange($event)"  class="form-control" required>
+              </div>
+              <div class='col col-lg-2 col-md-2 col-sm-2 col-xs-2'>
+                <label>upload Sales file</label>
+              <input  (click)="uploadFiles()"  class="form-control btn btn-sm btn-success" value="save">
+            </div>
+          </form>
+          <div>{{message}}</div>
+          <div class='row' style='margin-top:40px;'>
+            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5 style='font-weight:bold;'>SALES</h5>
+                <table class='table table-bordered table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Order Priority</th>
+                            <th>Units Sold</th>
+                            <th>Unit Price</th>
+                            <th>Total Revenue</th>
+                            <th>Item Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let one of sales;">
+                            <td>{{one.OrderDate}}</td>
+                            <td>{{one.OrderPriority}}</td>
+                            <td>{{one.UnitsSold}}</td>
+                            <td>{{one.UnitPrice}}</td>
+                            <td>{{one.TotalRevenue}}</td>
+                            <td>{{one.ItemType}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+

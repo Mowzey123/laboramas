@@ -1,0 +1,47 @@
+<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+    <!-- Right -->
+    <a href="#"><strong><span class="fa fa-dashboard"></span> DASHBOARD</strong></a>
+    <hr>
+    <div class="row">
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <h5>Select Date Range</h5>
+            <!-- <form> -->
+                <label>From</label>
+                <input type='date' (change)="handleDateChange($event,'from')" name='from'/>
+                <br>
+                <label>To</label>
+                <input type='date' name='to' (change)="handleDateChange($event,'to')"/>
+                <button (click)='filterDashbaord()'>Filter</button>
+            <!-- </form> -->
+        </div>
+        <br>
+        <div><b>Total Profit Made</b>:{{totalprofit}}</div>
+          <div class='row' style='margin-top:40px;'>
+            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h5 style='font-weight:bold;'>TOP FIVE PROFITABLE ITEMS</h5>
+                <table class='table table-bordered table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Order Priority</th>
+                            <th>Units Sold</th>
+                            <th>Unit Price</th>
+                            <th>Total Revenue</th>
+                            <th>Item Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let one of sales;">
+                            <td>{{one.OrderDate}}</td>
+                            <td>{{one.OrderPriority}}</td>
+                            <td>{{one.UnitsSold}}</td>
+                            <td>{{one.UnitPrice}}</td>
+                            <td>{{one.TotalRevenue}}</td>
+                            <td>{{one.ItemType}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+    </div>
+</div>

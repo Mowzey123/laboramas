@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+  webapp:
+    build: ./webapp
+    ports:
+      - "4200:4200"
+  server:
+    build: ./server
+    ports:
+      - "4000:4000"
+   
